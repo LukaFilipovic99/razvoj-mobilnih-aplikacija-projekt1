@@ -1,4 +1,4 @@
-package filipovic.youtube_api_demo_app.model;
+package filipovic.youtube_api_demo_app.dto;
 
 public class Channel {
 
