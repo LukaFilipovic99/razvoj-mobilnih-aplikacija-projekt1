@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">youtube_api_demo_app</string>
+    <string name="app_name">Java development YouTube videos</string>
+    
+    <string name="api_url">https://simple-youtube-search.p.rapidapi.com/search?query=java development</string>
+    <string name="api_key_header_key">X-RapidAPI-Key</string>
+    <string name="api_key_header_value">1e319fa7bbmshd6e0a56879a45ffp11536ajsnbc8bac78abdb</string>
+    <string name="api_host_header_key">X-RapidAPI-Host</string>
+    <string name="api_host_header_value">simple-youtube-search.p.rapidapi.com</string>
 </resources>

@@ -1,6 +1,6 @@
 package filipovic.youtube_api_demo_app.adapter;
 
-import android.app.Application;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,13 +17,15 @@ import java.util.Objects;
 
 import filipovic.youtube_api_demo_app.R;
 import filipovic.youtube_api_demo_app.dto.Result;
-import filipovic.youtube_api_demo_app.model.Video;
 
 public class VideosAdapter extends RecyclerView.Adapter<VideosAdapter.Row> {
 
     private List<Result> videos;
     private LayoutInflater layoutInflater;
 
+    public VideosAdapter(Context context) {
+        layoutInflater = LayoutInflater.from(context);
+    }
 
     @NonNull
     @Override
@@ -42,7 +44,6 @@ public class VideosAdapter extends RecyclerView.Adapter<VideosAdapter.Row> {
                 .fit()
                 .into(holder.ivThumbnail);
         holder.tvTitle.setText(video.getTitle());
-        holder.tvDuration.setText("Trajanje: " + video.getDurationFormatted());
     }
 
     @Override
@@ -58,14 +59,12 @@ public class VideosAdapter extends RecyclerView.Adapter<VideosAdapter.Row> {
 
         private ImageView ivThumbnail;
         private TextView tvTitle;
-        private TextView tvDuration;
 
         public Row(@NonNull View itemView) {
             super(itemView);
 
             ivThumbnail = itemView.findViewById(R.id.ivThumbnail);
             tvTitle = itemView.findViewById(R.id.tvTitle);
-            tvDuration = itemView.findViewById(R.id.tvDuration);
         }
 
     }
