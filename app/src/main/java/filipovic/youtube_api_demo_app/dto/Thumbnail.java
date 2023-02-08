@@ -1,6 +1,8 @@
 package filipovic.youtube_api_demo_app.dto;
 
-public class Thumbnail {
+import java.io.Serializable;
+
+public class Thumbnail implements Serializable {
 
     private String url;
     private Integer height;

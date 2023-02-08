@@ -1,6 +1,7 @@
 package filipovic.youtube_api_demo_app.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,9 +23,11 @@ public class VideosAdapter extends RecyclerView.Adapter<VideosAdapter.Row> {
 
     private List<Result> videos;
     private LayoutInflater layoutInflater;
+    private ItemClickInterface itemClickInterface;
 
-    public VideosAdapter(Context context) {
-        layoutInflater = LayoutInflater.from(context);
+    public VideosAdapter(Context context, ItemClickInterface itemClickInterface) {
+        this.layoutInflater = LayoutInflater.from(context);
+        this.itemClickInterface= itemClickInterface;
     }
 
     @NonNull
@@ -55,7 +58,7 @@ public class VideosAdapter extends RecyclerView.Adapter<VideosAdapter.Row> {
         this.videos = videos;
     }
 
-    public class Row extends RecyclerView.ViewHolder {
+    public class Row extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private ImageView ivThumbnail;
         private TextView tvTitle;
@@ -65,8 +68,20 @@ public class VideosAdapter extends RecyclerView.Adapter<VideosAdapter.Row> {
 
             ivThumbnail = itemView.findViewById(R.id.ivThumbnail);
             tvTitle = itemView.findViewById(R.id.tvTitle);
+
+            itemView.setOnClickListener(this);
         }
 
+        @Override
+        public void onClick(View view) {
+            if (Objects.nonNull(itemClickInterface)) {
+                itemClickInterface.onItemClick(videos.get(getAdapterPosition()));
+            } else return;
+        }
+    }
+
+    public interface ItemClickInterface {
+        void onItemClick(Result video);
     }
 
 }

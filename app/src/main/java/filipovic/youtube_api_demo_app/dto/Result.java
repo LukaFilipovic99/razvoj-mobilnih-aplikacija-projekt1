@@ -2,7 +2,9 @@ package filipovic.youtube_api_demo_app.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Result {
+import java.io.Serializable;
+
+public class Result implements Serializable {
 
     private String uploadedAt;
     private String url;

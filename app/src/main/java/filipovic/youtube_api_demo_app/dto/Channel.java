@@ -1,6 +1,8 @@
 package filipovic.youtube_api_demo_app.dto;
 
-public class Channel {
+import java.io.Serializable;
+
+public class Channel implements Serializable {
 
     private String name;
     private String icon;

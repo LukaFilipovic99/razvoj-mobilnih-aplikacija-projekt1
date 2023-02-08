@@ -1,8 +1,9 @@
 package filipovic.youtube_api_demo_app.dto;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Response {
+public class Response implements Serializable {
 
     private List<Result> results;
 

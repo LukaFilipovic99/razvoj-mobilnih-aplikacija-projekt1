@@ -1,5 +1,6 @@
 package filipovic.youtube_api_demo_app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -24,9 +25,10 @@ import java.util.concurrent.Executors;
 
 import filipovic.youtube_api_demo_app.adapter.VideosAdapter;
 import filipovic.youtube_api_demo_app.dto.Response;
+import filipovic.youtube_api_demo_app.dto.Result;
 import filipovic.youtube_api_demo_app.exception.ApiCallFailedException;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements VideosAdapter.ItemClickInterface {
 
     private RecyclerView recyclerView;
     private VideosAdapter videosAdapter;
@@ -47,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initAdapter() {
-        videosAdapter = new VideosAdapter(this);
+        videosAdapter = new VideosAdapter(this, this);
         recyclerView.setAdapter(videosAdapter);
     }
 
@@ -56,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
         Handler handler = new Handler(Looper.getMainLooper());
 
         executorService.execute(() -> {
-            Log.wtf("ewe", "fdfdfdf");
             try {
                 URL url = new URL(getString(R.string.api_url));
 
@@ -97,5 +98,12 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         });
+    }
+
+    @Override
+    public void onItemClick(Result video) {
+        Intent intent = new Intent(this, VideoDetails.class);
+        intent.putExtra("video", video);
+        startActivity(intent);
     }
 }
