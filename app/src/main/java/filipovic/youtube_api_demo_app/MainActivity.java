@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.gson.Gson;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity implements VideosAdapter.Ite
 
     private RecyclerView recyclerView;
     private VideosAdapter videosAdapter;
+
+    private final ObjectMapper objectMapper= new ObjectMapper();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements VideosAdapter.Ite
                         new InputStreamReader(httpURLConnection.getInputStream());
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 
-                Response response = new Gson().fromJson(bufferedReader, Response.class);
+                Response response= objectMapper.readValue(bufferedReader, Response.class);
 
                 bufferedReader.close();
                 inputStreamReader.close();

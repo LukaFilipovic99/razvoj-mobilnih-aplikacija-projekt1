@@ -1,8 +1,11 @@
 package filipovic.youtube_api_demo_app.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.io.Serializable;
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Response implements Serializable {
 
     private List<Result> results;
