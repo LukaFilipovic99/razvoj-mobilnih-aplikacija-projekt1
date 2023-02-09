@@ -1,7 +1,6 @@
 package filipovic.youtube_api_demo_app.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +26,7 @@ public class VideosAdapter extends RecyclerView.Adapter<VideosAdapter.Row> {
 
     public VideosAdapter(Context context, ItemClickInterface itemClickInterface) {
         this.layoutInflater = LayoutInflater.from(context);
-        this.itemClickInterface= itemClickInterface;
+        this.itemClickInterface = itemClickInterface;
     }
 
     @NonNull
