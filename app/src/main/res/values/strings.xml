@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Java development YouTube videos</string>
+    <string name="app_name">YouTube - Java development</string>
     
     <string name="api_url">https://simple-youtube-search.p.rapidapi.com/search?query=java development</string>
     <string name="api_key_header_key">X-RapidAPI-Key</string>
